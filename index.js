@@ -4,6 +4,7 @@ var app = express();
 app.use(express.json());
 
 const names = [{ id: 1, fname: "CPP" }, { id: 2, fname: "Java" }];
+var port = process.env.PORT || 8080;
 
 app.get("/", function(req, res) {
   res.send(names);
@@ -24,6 +25,6 @@ app.post("/courses", function(req, res) {
   res.send(course);
 });
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log("Server started!");
 });
