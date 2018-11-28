@@ -6,10 +6,7 @@ app.use(express.json());
 const names = [{ id: 1, fname: "CPP" }, { id: 2, fname: "Java" }];
 
 app.get("/", function(req, res) {
-  res.writeHead(302, {
-    location: "https://www.google.com/images/srpr/logo11w.png"
-  });
-  res.end();
+  res.send(names);
 });
 
 app.get("/getcourses/:id", function(req, res) {
