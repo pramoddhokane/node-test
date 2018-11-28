@@ -1,7 +1,10 @@
 var express = require("express");
 var app = express();
-var http = require('http');
-var fs = require("fs");
+var path = require("path");
+
+app.use(express.static(__dirname + '/js'));
+app.use(express.static(__dirname + '/css'));
+app.use(express.static(__dirname + '/'));
 
 app.use(express.json());
 
@@ -9,11 +12,9 @@ const names = [{ id: 1, fname: "CPP" }, { id: 2, fname: "Java" }];
 var port = process.env.PORT || 8080;
 
 app.get("/", function(req, res) {
-  fs.readFile("index.html", function(err, data){
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.write(data);
-  res.end();
-});
+  
+res.sendFile(path.join(__dirname+'/index.html'));
+
 });
 
 app.get("/getcourses/:id", function(req, res) {
